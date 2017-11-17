@@ -13,7 +13,7 @@ public class Enemy_Spawning : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
-            Instantiate(enemy, new Vector3(0, -5, 0), transform.rotation);
+            Instantiate(enemy, new Vector3(0, 10, 0), transform.rotation);
         }
     }
 }

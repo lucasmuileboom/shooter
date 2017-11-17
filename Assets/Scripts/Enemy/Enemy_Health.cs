@@ -17,6 +17,7 @@ public class Enemy_Health : MonoBehaviour
     {
         if (health <= dmg)
         {
+            print("des");
             Score.SetScore(health);
             Enemy_Spawning.Spawning(1);
             Destroy(this.gameObject);

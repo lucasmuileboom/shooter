@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Shoot : MonoBehaviour
 {
     [SerializeField] private Text guntxt;
+    private database database;
     private InputManager InputManager;
     private Guns Guns;
     private Ray ray;
@@ -17,6 +18,7 @@ public class Shoot : MonoBehaviour
 
     private void Start ()
     {
+        database = GameObject.Find("Game").GetComponent<database>();
         InputManager = GetComponent<InputManager>();
         Guns = GetComponent<Guns>();
         guntxt.text = bullets.ToString();
@@ -30,15 +32,17 @@ public class Shoot : MonoBehaviour
         }
         if (InputManager.mouseclick() && timer < 0 && bullets > 0 && !reloading)
         {
+            
             bullets--;
             guntxt.text = bullets.ToString();
             timer = Guns.Getfirespeed();
             Debug.DrawRay(transform.position, Camera.main.transform.forward * range);
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(transform.position, Camera.main.transform.forward, out hit, range))
-            {             
+            {
                 if (hit.collider.gameObject.tag == "enemy")
                 {
+                    database.SaveToDataBase(this.gameObject, hit.collider.gameObject);
                     hit.collider.gameObject.GetComponent<Enemy_Health>().TakeDamage(Guns.Getdmg());
                 }
             }

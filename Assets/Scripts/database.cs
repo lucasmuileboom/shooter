@@ -2,20 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class database : MonoBehaviour {
-
-	// Use this for initialization
-	void Start()
-    {
-        
-    }
-	
-	// Update is called once per frame
-	void Update()
-    {
-
-    }
-
+public class database : MonoBehaviour
+{
     public void SaveToDataBase(Transform start, Transform end)
     {
         StartCoroutine(DoPHP(start, end));
