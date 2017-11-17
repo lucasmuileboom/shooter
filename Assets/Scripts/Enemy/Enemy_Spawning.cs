@@ -7,7 +7,7 @@ public class Enemy_Spawning : MonoBehaviour
     [SerializeField] private GameObject enemy;
 	void Start ()
     {
-        Spawning(5);
+        Spawning(15);
     }
     public void Spawning(int amount)
     {
